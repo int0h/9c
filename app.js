@@ -8,6 +8,48 @@ const dom = {
     barHangTimeSec: document.querySelector('#barHangTimeSec'),
     score: document.querySelector('#score'),
     grade: document.querySelector('#grade'),
+    clearButton: document.querySelector('#clearButton'),
+}
+
+function objToSearchParams(obj) {
+    const sp = new URLSearchParams();
+    for (const k of Object.keys(obj)) {
+        sp.append(k, obj[k]);
+    }
+    return sp.toString();
+}
+
+function searchParamsToObj(url) {
+    const sp = new URLSearchParams(url);
+    const obj = {};
+    for (const [k, v] of sp.entries()) {
+        obj[k] = v;
+    }
+    return obj;
+}
+
+function readFromHash() {
+    try {
+        const dataStr = location.hash.split('#')[1];
+        if (!dataStr) {
+            return;
+        }
+        const obj = searchParamsToObj(dataStr);
+        document.querySelectorAll('input, select').forEach(el => {
+            el.value = obj[el.id];
+        });
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+function saveToHash() {
+    const obj = {};
+    document.querySelectorAll('input, select').forEach(el => {
+        obj[el.id] = el.value;
+    });
+    const dataStr = objToSearchParams(obj);
+    location.hash = '#' + dataStr;
 }
 
 /**
@@ -66,6 +108,12 @@ function calcResult() {
 }
 
 window.oninput = () => {
+    calcResult();
+    saveToHash();
+}
+
+clearButton.onclick = () => {
+    history.pushState({}, '', location.href.split('#')[0]);
     calcResult();
 }
 
@@ -169,3 +217,6 @@ const gradeMap = [
     [1, '6a'],
     [0, '5'],
 ].reverse();
+
+readFromHash();
+calcResult();
