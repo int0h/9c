@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0", maximum-scale=1.0, user-scalable=0">
+    <title>Math App</title>
+    <style>
+        .tests {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            display: flex;
+            margin: 20px 0;
+        }
+        span.label {
+            flex: 0 0 200px;
+            display: flex;
+            justify-content: end;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tests">
+        <label>
+            <span class="label">Your weight:</span>
+            <input type="number" id="personWeight">&nbsp; kg
+        </label>
+        <label>
+            <span class="label">20mm hang 5 sec:</span>
+            <input type="number" id="hangWeight">&nbsp; kg
+        </label>
+        <label>
+            <span class="label">Max weight pull-up:</span>
+            <input type="number" id="pullWeight">&nbsp; kg
+        </label>
+        <label>
+            <span class="label">Core:&nbsp;</span>
+            <select id="coreForm">
+                <option value="bendLSit">L-sit (bend knees)</option>
+                <option value="lSit">L-sit</option>
+                <option value="frontLever">Front Lever</option>
+            </select>
+            &nbsp;for:&nbsp;
+            <input type="number" id="coreTime">&nbsp; sec
+        </label>
+        <label>
+            <span class="label">Hang from bar:</span>
+            <input type="number" id="barHangTimeMin">&nbsp; min &nbsp;
+            <input type="number" id="barHangTimeSec">&nbsp; sec
+        </label>
+        <label>
+            <span class="label">Points:</span>
+            <b id="score">13.5</b>
+        </label>
+        <label>
+            <span class="label">Climbing Grade:</span>
+            <b id="grade">7a</b>
+        </label>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
