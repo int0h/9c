@@ -32,6 +32,12 @@ function readFromHash() {
     try {
         const dataStr = location.hash.split('#')[1];
         if (!dataStr) {
+            document.querySelectorAll('input').forEach(el => {
+                el.value = '';
+            });
+            document.querySelectorAll('select').forEach(el => {
+                el.selectedIndex = 0;
+            });
             return;
         }
         const obj = searchParamsToObj(dataStr);
@@ -114,6 +120,7 @@ window.oninput = () => {
 
 clearButton.onclick = () => {
     history.pushState({}, '', location.href.split('#')[0]);
+    readFromHash();
     calcResult();
 }
 
