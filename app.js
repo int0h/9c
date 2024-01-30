@@ -6,8 +6,15 @@ const dom = {
     coreTime: document.querySelector('#coreTime'),
     barHangTimeMin: document.querySelector('#barHangTimeMin'),
     barHangTimeSec: document.querySelector('#barHangTimeSec'),
+
+    sdHangWeight: document.querySelector('#sdHangWeight'),
+    sdPullWeight: document.querySelector('#sdPullWeight'),
+    sdCore: document.querySelector('#sdCore'),
+    sdBarHangTime: document.querySelector('#sdBarHangTime'),
+
     score: document.querySelector('#score'),
     grade: document.querySelector('#grade'),
+
     clearButton: document.querySelector('#clearButton'),
 }
 
@@ -107,6 +114,12 @@ function calcResult() {
     const pullPoints = mapValue(exerciseScoring.pullWeight, (Number(pullWeight) + w) / w * 100, true);
     const corePoints = mapValue(exerciseScoring.core[coreForm], Number(coreTime), true);
     const barPoints = mapValue(exerciseScoring.barHang, barHangTime, true);
+
+    dom.sdHangWeight.textContent = `(${hangPoints.toFixed(2)})`;
+    dom.sdPullWeight.textContent = `(${pullPoints.toFixed(2)})`;
+    dom.sdCore.textContent = `(${corePoints.toFixed(2)})`;
+    dom.sdBarHangTime.textContent = `(${barPoints.toFixed(2)})`;
+
     const total = hangPoints + pullPoints + corePoints + barPoints;
     const grade = mapValue(gradeMap, Math.round(total));
     dom.score.textContent = total.toFixed(2);

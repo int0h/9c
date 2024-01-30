@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0", maximum-scale=1.0, user-scalable=0">
     <title>9c</title>
     <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+        }
         .tests {
             display: flex;
             flex-direction: column;
         }
         label {
             display: flex;
-            margin: 20px 0;
+            margin: 10px 0;
             align-items: baseline;
         }
         span.label {
@@ -20,8 +23,16 @@
             text-align: end;
         }
         .short-input {
-            width: 4em;
-            height: 2em;
+            width: 2.5em;
+            height: 1.5em;
+        }
+        hr {
+            align-self: stretch;
+            width: 100%;
+        }
+        .score-details {
+            color: blue;
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -31,14 +42,19 @@
             <span class="label">Your weight:</span>
             <input type="number" id="personWeight" class="short-input">&nbsp; <span class="units">kg</span>
         </label>
+        <hr>
         <label>
             <span class="label">20mm hang 5 sec:</span>
             <input type="number" id="hangWeight" class="short-input">&nbsp; <span class="units">kg</span>
+            <span class="score-details" id="sdHangWeight"></span>
         </label>
+        <hr>
         <label>
             <span class="label">Max weight pull-up:</span>
             <input type="number" id="pullWeight" class="short-input">&nbsp; <span class="units">kg</span>
+            <span class="score-details" id="sdPullWeight"></span>
         </label>
+        <hr>
         <label>
             <span class="label">Core:&nbsp;</span>
             <select id="coreForm">
@@ -50,22 +66,29 @@
         <label>
             <span class="label">&nbsp;for:&nbsp;</span>
             <input type="number" id="coreTime" class="short-input">&nbsp; <span class="units">sec</span>
+            <span class="score-details" id="sdCore"></span>
         </label>
+        <hr>
         <label>
             <span class="label">Hang from bar:</span>
             <input type="number" id="barHangTimeMin" class="short-input">&nbsp; <span class="units">min</span> &nbsp;
             <input type="number" id="barHangTimeSec" class="short-input">&nbsp; <span class="units">sec</span>
+            <span class="score-details" id="sdBarHangTime"></span>
         </label>
+        <hr>
         <label>
             <span class="label">Points:</span>
             <b id="score">13.5</b>
         </label>
+        <hr>
         <label>
             <span class="label">Climbing Grade:</span>
             <b id="grade">7a</b>
         </label>
         <button id="clearButton">Clear</button>
     </div>
+    <br>
+    Based on <a href="https://www.reddit.com/r/climbharder/comments/jv3w2g/the_strength_you_need_to_climb_9c_the_ultimate/">this</a> Reddit post
     <script src="app.js"></script>
 </body>
 </html>
